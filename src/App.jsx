@@ -1,23 +1,20 @@
-import { useState } from 'react'
-import './App.css'
-import Header from './pages/header/Header'
-import Section from './pages/section/Section'
+import { useState } from "react";
+import "./App.css";
+import Header from "./pages/header/Header";
+import Section from "./pages/section/Section";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CartPage from './components/CartPage';
+import CartPage from "./components/CartPage";
 
 function App() {
-
   const [cardDetails, setCartDetails] = useState([]);
 
   const setCartDetailsHandler = (cartDetail) => {
-    setCartDetails(prev => [...prev, cartDetail])
-  }
+    setCartDetails((prev) => [...prev, cartDetail]);
+  };
 
   return (
     <>
       <div>
-
-
         <main>
           <header className="hunger-box-container">
             <Header cardDetails={cardDetails} />
@@ -27,16 +24,31 @@ function App() {
           </section> */}
           <Router>
             <Routes>
-              <Route path="/" element={<>   <section>
-                <Section setCartDetails={setCartDetailsHandler} />
-              </section></>} />
-              <Route path="/cart" element={<><CartPage cardDetails={cardDetails} /></>} />
+              <Route
+                path="/"
+                element={
+                  <>
+                    {" "}
+                    <section>
+                      <Section setCartDetails={setCartDetailsHandler} />
+                    </section>
+                  </>
+                }
+              />
+              <Route
+                path="/cart"
+                element={
+                  <>
+                    <CartPage cardDetails={cardDetails} />
+                  </>
+                }
+              />
             </Routes>
           </Router>
         </main>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
